@@ -1,4 +1,4 @@
 class Like < ActiveRecord::Base
   belongs_to :user
-  belongs_to :statusmenu_item
+  belongs_to :menu_item
 end
