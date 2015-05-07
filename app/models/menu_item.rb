@@ -1,5 +1,6 @@
 class MenuItem < ActiveRecord::Base
   belongs_to :menu
+  belongs_to :menu_item_category
   has_many :likes
   has_many :users, through: :likes
   has_many :menu_item_photos

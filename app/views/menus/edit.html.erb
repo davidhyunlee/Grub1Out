@@ -1,0 +1,19 @@
+
+<%= @menu.name %>
+
+<%= form_for [@business, @menu, @category] do |f| %>
+
+  <label>Category Name:</label><%= f.text_field :name %>
+
+  <%= f.submit %>
+
+<% end %>
+
+<% @menu.menu_item_categories.each do |cat| %>
+  <%= cat.name %><br>
+
+    <% cat.menu_items.each do |item| %>
+      <br>- <%= item.name %>
+    <% end %>
+
+<% end %>

@@ -39,6 +39,11 @@ gem 'devise'
 gem 'cancan'
 # Using a gem to interface with Yelp API
 gem 'yelp', require: 'yelp'
+# Twitter
+gem 'omniauth-twitter'
+
+gem 'omniauth-linkedin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
