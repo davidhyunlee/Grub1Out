@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth'
 # OAuth for Facebook.
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-linkedin'
 # Better error pages.
 gem 'better_errors'
 # Pagination
