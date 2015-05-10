@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150507210410) do
 
   create_table "business_photos", force: :cascade do |t|
     t.integer  "business_id"
-    t.string   "photo"
+    t.string   "photo",       null: false
     t.string   "caption"
     t.integer  "user_id"
     t.integer  "review_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150507210410) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150507210410) do
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "comment"
-    t.string   "status"
+    t.boolean  "status"
     t.integer  "menu_item_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150507210410) do
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "menu_item_categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",         null: false
     t.integer  "menu_item_id"
     t.integer  "menu_id"
     t.datetime "created_at",   null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20150507210410) do
   add_index "menu_item_categories", ["menu_item_id"], name: "index_menu_item_categories_on_menu_item_id", using: :btree
 
   create_table "menu_item_photos", force: :cascade do |t|
-    t.string   "photo"
+    t.string   "photo",        null: false
     t.integer  "menu_item_id"
     t.string   "caption"
     t.integer  "user_id"
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 20150507210410) do
 
   create_table "menu_items", force: :cascade do |t|
     t.integer  "menu_id"
-    t.string   "name"
+    t.string   "name",                  null: false
     t.string   "description"
     t.float    "price"
     t.integer  "likes"
@@ -126,9 +126,9 @@ ActiveRecord::Schema.define(version: 20150507210410) do
   add_index "menus", ["business_id"], name: "index_menus_on_business_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
+    t.integer  "rating",      null: false
     t.integer  "business_id"
-    t.string   "body"
+    t.string   "body",        null: false
     t.string   "title"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20150507210410) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
