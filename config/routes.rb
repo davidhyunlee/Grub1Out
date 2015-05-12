@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+
+
   resources :businesses do
-    resources :menus do
+    resources :reviews, :menus do
       resources :menu_item_categories
     end
   end
- 
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # devise_scope :user do
