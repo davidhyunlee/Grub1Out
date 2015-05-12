@@ -42,9 +42,6 @@ gem 'cancan'
 # Using a gem to interface with Yelp API
 gem 'yelp', require: 'yelp'
 # Twitter
-gem 'omniauth-twitter'
-
-gem 'omniauth-linkedin'
 gem 'geocoder'
 
 # Use ActiveModel has_secure_password
