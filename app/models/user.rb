@@ -52,43 +52,43 @@ class User < ActiveRecord::Base
 # end
 
 
-def self.from_omniauth(auth)
-  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    user.email = auth.info.email
-    user.name = auth.info.name
-    user.username = auth.info.nickname
-    user.password = Devise.friendly_token[0,20]
-      user.first_name = auth.info.first_name   # assuming the user model has a name
-      user.last_name = auth.info.last_name   # assuming the user model has a name
-      user.image = auth.info.image # assuming the user model has an image
-      user.oauth_token = auth.credentials.oauth_token
-      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-    end
-  end
+# def self.from_omniauth(auth)
+#   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+#     user.email = auth.info.email
+#     user.name = auth.info.name
+#     user.username = auth.info.nickname
+#     user.password = Devise.friendly_token[0,20]
+#       user.first_name = auth.info.first_name   # assuming the user model has a name
+#       user.last_name = auth.info.last_name   # assuming the user model has a name
+#       user.image = auth.info.image # assuming the user model has an image
+#       user.oauth_token = auth.credentials.oauth_token
+#       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+#     end
+#   end
 
-  def password_required?
-    super && provider.blank?
-  end
+#   def password_required?
+#     super && provider.blank?
+#   end
 
-  def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-    data = access_token.info
-    user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
-    if user
-      return user
-    else
-      registered_user = User.where(:email => access_token.info.email).first
-      if registered_user
-        return registered_user
-      else
-        user = User.create(name: data["name"],
-          provider:access_token.provider,
-          email: data["email"],
-          uid: access_token.uid ,
-          password: Devise.friendly_token[0,20]
-          )
-      end
-    end
-  end
+  # def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+  #   data = access_token.info
+  #   user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
+  #   if user
+  #     return user
+  #   else
+  #     registered_user = User.where(:email => access_token.info.email).first
+  #     if registered_user
+  #       return registered_user
+  #     else
+  #       user = User.create(name: data["name"],
+  #         provider:access_token.provider,
+  #         email: data["email"],
+  #         uid: access_token.uid ,
+  #         password: Devise.friendly_token[0,20]
+  #         )
+  #     end
+  #   end
+  # end
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
