@@ -19,6 +19,8 @@ class MenusController < ApplicationController
   end
  
   def show
+    @business = Business.find(params[:business_id])
+    @menus = @business.menus.all
   end
  
   def edit
