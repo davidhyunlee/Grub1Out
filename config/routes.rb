@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :businesses do
     resources :menus do
-      resources :menu_item_categories
+      resources :menu_item_categories do
+        resources :menu_items
+      end
     end
   end
  
