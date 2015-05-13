@@ -24,6 +24,7 @@ Devise.setup do |config|
   require 'omniauth-facebook'
   require 'omniauth-twitter'
   require 'omniauth-google-oauth2'
+  require 'omniauth-instagram'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -239,6 +240,7 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_SECRET']
   config.omniauth :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], { access_type: 'offline', approval_prompt: ''}
+  config.omniauth :instagram, ENV['INSTAGRAM_ID'], ENV['INSTAGRAM_SECRET']
   # config.omniauth :facebook, "KEY", "SECRET"
   # config.omniauth :twitter, "KEY", "SECRET"
   # config.omniauth :linked_in, "KEY", "SECRET"

@@ -29,6 +29,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-instagram'
+gem 'twitter'
+gem 'instagram'
 # Better error pages.
 gem 'better_errors'
 # Pagination
