@@ -3,13 +3,6 @@ class Menu < ActiveRecord::Base
   has_many :menu_item_categories
   has_many :menu_items, through: :menu_item_categories
 
-
-
-
-
-
-
-
    #adding picture uploading and likes dislikes
    mount_uploader :picture, PictureUploader
     validate :picture_size
@@ -29,7 +22,6 @@ class Menu < ActiveRecord::Base
             errors.add(:picture, "should be less than 5MB")
         end
     end
-
 
   def self.pussy
     puts "your pussy is mine."

@@ -26,6 +26,8 @@ class MenusController < ApplicationController
     @menu = @business.menus.find(params[:id])
     @category = @menu.menu_item_categories.new(params[:name])
     @categories = @menu.menu_item_categories.all
+    @menuitem = MenuItem.new
+    
   end
  
   def update
@@ -37,4 +39,4 @@ class MenusController < ApplicationController
     params.require(:menu).permit(:name)
   end
  
-  end
+end

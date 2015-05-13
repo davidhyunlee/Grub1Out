@@ -10,10 +10,26 @@
 <% end %>
 
 <% @menu.menu_item_categories.each do |cat| %>
-  <%= cat.name %><br>
 
-    <% cat.menu_items.each do |item| %>
-      <br>- <%= item.name %>
-    <% end %>
+<strong><p><%= cat.name %></p></strong>
+
+  <%= form_tag("/businesses/#{@business.id}/menus/#{@menu.id}/menu_item_categories/#{cat.id}/menu_items", method: :post) do %>
+
+    <%= text_field_tag 'menu_item[name]' %>
+    <%= text_field_tag 'menu_item[description]' %>
+    <%= text_field_tag 'menu_item[price]' %>
+    <%= hidden_field_tag 'menu_item[menu_id]', @menu.id %>
+    <%= hidden_field_tag 'menu_item[menu_item_category_id]', cat.id %>
+    <%= hidden_field_tag 'menu_item[business_id]', @business.id %>
+
+    <%= submit_tag 'submit!' %>
+
+  <% end %>
+
+  <% cat.menu_items.each do |items| %>
+  
+    <%= items.name %> - <%= items.description %> - <%= items.price %><br>
+
+  <% end %>
 
 <% end %>
