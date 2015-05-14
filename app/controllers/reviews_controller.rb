@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   def index
+    @reviews = Review.all
   end
 
   def new
@@ -26,11 +27,15 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
 
-    if @review.update_attributes(review_params)
+    if @review.update(review_params)
       redirect_to business_path
     else
-      render "edit"
+      redirect_to business_path
     end
+  end
+
+  def show
+    @review = Review.find(params[:id])
   end
 
   private
