@@ -24,16 +24,17 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+## OAuth Related Gems
 gem 'omniauth'
-# OAuth for Facebook.
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-instagram'
+
 gem 'twitter'
 gem 'instagram'
-# Better error pages.
-gem 'better_errors'
+
+
 # Pagination
 gem 'kaminari'
 # Keeping stuff secret.
@@ -44,9 +45,12 @@ gem 'devise'
 gem 'cancan'
 # Using a gem to interface with Yelp API
 gem 'yelp', require: 'yelp'
-# Twitter
+
 gem 'geocoder'
 gem 'active_model_serializers'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -80,6 +84,9 @@ group :development, :test do
 
   # factory girl used for testing with factories
   gem 'factory_girl_rails'
+
+  # Better error pages.
+  gem 'better_errors'
 end
 
 group :production do

@@ -67,16 +67,6 @@ ActiveRecord::Schema.define(version: 20150514021118) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "identities", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
-
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "comment"
@@ -194,7 +184,6 @@ ActiveRecord::Schema.define(version: 20150514021118) do
   add_foreign_key "business_photos", "businesses"
   add_foreign_key "business_photos", "reviews"
   add_foreign_key "business_photos", "users"
-  add_foreign_key "identities", "users"
   add_foreign_key "likes", "menu_items"
   add_foreign_key "likes", "users"
   add_foreign_key "menu_item_categories", "menu_items"
