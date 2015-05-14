@@ -1,3 +1,6 @@
 class MenuSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :restaurant_name
+
+
+
 end
