@@ -7,13 +7,11 @@ class MenusController < ApplicationController
   def new
     @business = Business.find(params[:business_id])
     @menu = @business.menus.new
-    @menu.restaurant_name = @business.name
   end
 
   def create
     @business = Business.find(params[:business_id])
     @menu = @business.menus.new(menu_params)
-    @menu.restaurant_name = @business.name
     if @menu.save
       redirect_to edit_business_menu_path(@business, @menu)
     else
