@@ -1,5 +1,6 @@
-
+<%= @menu.restaurant_name %> <br />
 <%= @menu.name %>
+
 
 <%= form_for [@business, @menu, @category] do |f| %>
 
@@ -27,7 +28,7 @@
   <% end %>
 
   <% cat.menu_items.each do |items| %>
-  
+
     <%= items.name %> - <%= items.description %> - <%= items.price %><br>
 
   <% end %>

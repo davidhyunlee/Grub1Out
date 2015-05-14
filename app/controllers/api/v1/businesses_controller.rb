@@ -1,11 +1,16 @@
-class API::V1::BusinessesController < ApplicationController
+class Api::V1::BusinessesController < ApplicationController
+  protect_from_forgery with: :null_session
   respond_to :json
 
   def index
-    render json: Business.all
+    businesses = Business.all
+    render json: businesses
   end
 
   def show
+    business = Business.find(params[:id])
+    render json: business
   end
+
 
 end
