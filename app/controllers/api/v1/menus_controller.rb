@@ -8,8 +8,11 @@ class Api::V1::MenusController < ApplicationController
   end
 
   def show
-
+    menu = Menu.find(params[:id])
+    render json: menu
   end
+
+
 
 
 end
