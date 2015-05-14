@@ -221,6 +221,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (2.5)
+    mini_magick (4.2.3)
     mini_portile (0.6.2)
     minitest (5.6.1)
     multi_json (1.11.0)
@@ -399,6 +400,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mini_magick
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
