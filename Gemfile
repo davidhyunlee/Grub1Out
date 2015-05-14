@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.1'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -32,6 +31,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-instagram'
 gem 'twitter'
 gem 'instagram'
+gem 'redis'
+gem 'sidekiq'
 # Better error pages.
 gem 'better_errors'
 # Pagination
