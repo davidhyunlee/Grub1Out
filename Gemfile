@@ -47,6 +47,8 @@ gem 'yelp', require: 'yelp'
 # Twitter
 gem 'geocoder'
 gem 'active_model_serializers'
+gem 'carrierwave'
+gem 'fog'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
