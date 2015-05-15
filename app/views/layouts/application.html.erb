@@ -12,6 +12,7 @@
 
 
 
+
 <div class="navbar-wrapper">
       <div class="container">
 
@@ -58,6 +59,26 @@
       </div>
     </div>
 
+  <div id="header"></div>
+  <div id="container">
+    <div id="user_nav">
+        <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.name %></strong>
+        <%= link_to 'Edit profile', edit_user_registration_path %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+        <%= link_to "Sign up", new_user_registration_path %> |
+        <%= link_to "Login", new_user_session_path %> |
+        <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %> |
+        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> |
+        <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %> |
+        <%= link_to "Sign in with Instagram", user_omniauth_authorize_path(:instagram) %>
+        <% end %>
+    </div>
+
+
+
+
 
         <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
@@ -65,6 +86,7 @@
 <%= yield %>
 <br><br>
   <%= params %>
+
   <div>
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
@@ -72,6 +94,8 @@
       </footer>
 
     </div>
+
+
 
 </body>
 </html>
