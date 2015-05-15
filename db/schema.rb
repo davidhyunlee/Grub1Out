@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20150513013426) do
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "comment"
-    t.boolean  "status"
     t.string   "status"
     t.integer  "menu_item_id"
     t.datetime "created_at",   null: false
@@ -145,10 +144,6 @@ ActiveRecord::Schema.define(version: 20150513013426) do
   add_index "menus", ["business_id"], name: "index_menus_on_business_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
-
-    t.integer  "rating"
-    t.integer  "business_id"
-    t.string   "body"
     t.integer  "rating"
     t.integer  "business_id"
     t.string   "body"
