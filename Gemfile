@@ -48,6 +48,7 @@ gem 'cancancan', '~> 1.10'
 gem 'yelp', require: 'yelp'
 
 gem 'geocoder'
+
 gem 'active_model_serializers'
 gem 'carrierwave'
 gem 'fog'
