@@ -1,109 +1,66 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Grubit</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<head>
+
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+ <%= csrf_meta_tags %>
+    <title>Grubit</title>
 </head>
 <body>
 
-  <div id="header"></div>
-  <div id="container">
-    <div id="user_nav">
-        <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.name %></strong>
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %> |
-        <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %> |
-        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> |
-        <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %> |
-        <%= link_to "Sign in with Instagram", user_omniauth_authorize_path(:instagram) %>
-        <% end %>
-    </div>
-</div>
-  <div id="header_bg_img"></div>
-  <div id="searchbar"></div>
+<div class="navbar-wrapper">
+      <div class="container">
 
-  <div class="ui three column grid">
-    <div class="column">
-    <center>
-      <div class="ui card">
-        <div class="ui slide masked reveal image">
-          <img src="/images/avatar/large/jenny.jpg" class="visible content">
-          <img src="/images/avatar/large/elliot.jpg" class="hidden content">
-        </div>
-        <div class="content">
-          <a class="header">Bestia LA</a>
-          <div class="meta">
-            <span class="date">Create in Sep 2014</span>
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Grubit</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">Who We Are</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Signup <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">With facebook</a></li>
+                    <li><a href="#">with google</a></li>
+                    <li><a href="#">With instagram</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">With yelp</li>
+                    <li><a href="#">Whatever link</a></li>
+                    <li><a href="#">One more link</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-        <div class="extra content">
-          <a>
-            <i class="users icon"></i>
-            2 Members
-          </a>
-        </div>
+        </nav>
+
       </div>
-      </center>
     </div>
-    <div class="column">
-          <center>
-      <div class="ui card">
-        <div class="ui slide masked reveal image">
-          <img src="/images/avatar/large/jenny.jpg" class="visible content">
-          <img src="/images/avatar/large/elliot.jpg" class="hidden content">
-        </div>
-        <div class="content">
-          <a class="header">Bestia LA</a>
-          <div class="meta">
-            <span class="date">Create in Sep 2014</span>
-          </div>
-        </div>
-        <div class="extra content">
-          <a>
-            <i class="users icon"></i>
-            2 Members
-          </a>
-        </div>
-      </div>
-      </center>
-    </div>
-    <div class="column">
-          <center>
-      <div class="ui card">
-        <div class="ui slide masked reveal image">
-          <img src="/images/avatar/large/jenny.jpg" class="visible content">
-          <img src="/images/avatar/large/elliot.jpg" class="hidden content">
-        </div>
-        <div class="content">
-          <a class="header">Bestia LA</a>
-          <div class="meta">
-            <span class="date">Create in Sep 2014</span>
-          </div>
-        </div>
-        <div class="extra content">
+    <!-- FOOTER -->
 
-          <a>
-            <i class="users icon"></i>
-            2 Members
-          </a>
-        </div>
-      </div>
-      </center>
-    </div>
-  </div>
-
-
-
-<p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
 
 <%= yield %>
 
+<div>
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Grubit <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div>
 </body>
 </html>
+

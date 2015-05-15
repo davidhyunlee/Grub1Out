@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
 
-  root to: "pages#index"
+  root "pages#index"
 
 end
