@@ -1,0 +1,12 @@
+<%= @item.name %>
+
+
+
+<%= form_for [@business, @menu, @category, @item, MenuItemPhoto.new] do |f| %>
+
+  Photo: <%= f.file_field :photo %><br>
+  Caption: <%= f.text_field :caption %>
+
+  <%= f.submit "Upload Photo for #{@item.name}" %>
+
+<% end %>
