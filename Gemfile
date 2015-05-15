@@ -43,7 +43,7 @@ gem 'figaro'
 # Using devise for user authentication.
 gem 'devise'
 # Using cancan for user authorization.
-gem 'cancan'
+gem 'cancancan', '~> 1.10'
 # Using a gem to interface with Yelp API
 gem 'yelp', require: 'yelp'
 
