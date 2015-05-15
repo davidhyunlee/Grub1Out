@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grubit</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+
+
+
+<div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Grubit</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">Who We Are</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                  <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.name %></strong>
+        <%= link_to 'Edit profile', edit_user_registration_path %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to "Login", new_user_session_path %> </li>
+        <li><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %></li>
+        <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> </li>
+        <li><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %> </li>
+        <li><%= link_to "Sign in with Instagram", user_omniauth_authorize_path(:instagram) %></li>
+        <% end %>
+
+
+                  </ul>
+
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+
+
+        <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+<%= yield %>
+<br><br>
+  <%= params %>
+  <div>
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Grubit Wes, David, Jeryl, Subhajit</p>
+      </footer>
+
+    </div>
+
+</body>
+</html>

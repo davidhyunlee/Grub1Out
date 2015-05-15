@@ -1,0 +1,27 @@
+ <h1>EDIT</h1>
+
+<%= form_for @business do |f| %>
+<%=f.label :name %>
+<%=f.text_field :name %>
+<%=f.label :address %>
+<%=f.text_field :address %>
+<%=f.label :address_2 %>
+<%=f.text_field :address_2 %>
+<%=f.label :city %>
+<%=f.text_field :city %>
+<%=f.label :country_code %>
+<%=f.text_field :country_code %>
+<%=f.label :cross_streets %>
+<%=f.text_field :cross_streets %>
+<%=f.label :postal_code %>
+<%=f.text_field :postal_code %>
+<%=f.label :state_code %>
+<%=f.text_field :state_code %>
+<%=f.label :phone %>
+<%=f.text_field :phone %>
+<%=f.label :rating %>
+<%=f.text_field :rating %>
+<%=f.label :about %>
+<%=f.text_field :about %>
+<%=f.submit %>
+<% end %>

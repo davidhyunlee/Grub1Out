@@ -1,0 +1,36 @@
+<%= @menu.restaurant_name %> <br />
+<%= @menu.name %>
+
+
+<%= form_for [@business, @menu, @category] do |f| %>
+
+  <label>Category Name:</label><%= f.text_field :name %>
+
+  <%= f.submit %>
+
+<% end %>
+
+<% @menu.menu_item_categories.each do |cat| %>
+
+<strong><p><%= cat.name %></p></strong>
+
+  <%= form_tag("/businesses/#{@business.id}/menus/#{@menu.id}/menu_item_categories/#{cat.id}/menu_items", method: :post) do %>
+
+    <%= text_field_tag 'menu_item[name]' %>
+    <%= text_field_tag 'menu_item[description]' %>
+    <%= text_field_tag 'menu_item[price]' %>
+    <%= hidden_field_tag 'menu_item[menu_id]', @menu.id %>
+    <%= hidden_field_tag 'menu_item[menu_item_category_id]', cat.id %>
+    <%= hidden_field_tag 'menu_item[business_id]', @business.id %>
+
+    <%= submit_tag 'submit!' %>
+
+  <% end %>
+
+  <% cat.menu_items.each do |items| %>
+
+    <%= items.name %> - <%= items.description %> - <%= items.price %><br>
+
+  <% end %>
+
+<% end %>
