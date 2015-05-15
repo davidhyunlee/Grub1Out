@@ -204,9 +204,6 @@ GEM
     geocoder (1.1.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-
-    gmaps4rails (2.1.2)
-
     hashie (3.4.1)
     hike (1.2.3)
     http (0.6.4)
@@ -409,11 +406,7 @@ DEPENDENCIES
   better_errors
   bootstrap-sass
   byebug
-
-  cancan
-
   cancancan (~> 1.10)
-
   capybara
   carrierwave
   coffee-rails (~> 4.1.0)
@@ -422,9 +415,7 @@ DEPENDENCIES
   figaro
   fog
   geocoder
-
   gmaps4rails
-
   instagram
   jbuilder (~> 2.0)
   jquery-rails

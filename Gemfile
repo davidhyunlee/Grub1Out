@@ -43,21 +43,12 @@ gem 'figaro'
 # Using devise for user authentication.
 gem 'devise'
 # Using cancan for user authorization.
-<<<<<<< HEAD
-gem 'cancan'
-# Using a gem to interface with Yelp API
-gem 'yelp', require: 'yelp'
-
-#gecoder and gmaps for the win
-gem 'geocoder'
-gem 'gmaps4rails'
-=======
 gem 'cancancan', '~> 1.10'
 # Using a gem to interface with Yelp API
 gem 'yelp', require: 'yelp'
 
 gem 'geocoder'
->>>>>>> a6fcc90f5974bc13142b2bb0e6513e090212a87d
+
 gem 'active_model_serializers'
 gem 'carrierwave'
 gem 'fog'
