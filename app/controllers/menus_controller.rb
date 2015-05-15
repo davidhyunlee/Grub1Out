@@ -1,7 +1,8 @@
 class MenusController < ApplicationController
 
   def index
-    render json: @menus
+    @business = Business.find(params[:business_id])
+    @menus = @business.menus.all
   end
 
   def new
@@ -21,7 +22,8 @@ class MenusController < ApplicationController
 
   def show
     @business = Business.find(params[:business_id])
-    @menus = @business.menus.all
+    @menu = @business.menus.find(params[:id])
+    @category = @menu.menu_item_categories.all
   end
 
   def edit

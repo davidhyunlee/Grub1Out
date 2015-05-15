@@ -1,19 +1,2 @@
-@import "semantic-ui";
-
-#header {
-  background: #000;
-  height: 70px;
-  width: 100%;
-}
-
-#header_bg_img {
-  height: 300px;
-  width: 100%;
-  background: #5D5D5D;
-}
-
-#searchbar {
-  height: 70px;
-  width: 100%;
-  background: #000;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";

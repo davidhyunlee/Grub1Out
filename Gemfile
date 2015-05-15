@@ -34,6 +34,7 @@ gem 'omniauth-instagram'
 gem 'twitter'
 gem 'instagram'
 
+gem 'bootstrap-sass'
 
 # Pagination
 gem 'kaminari'
@@ -61,11 +62,6 @@ gem 'mini_magick'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-semantic-ui'
-  gem 'rails-assets-angular'
-end
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -87,10 +83,12 @@ group :development, :test do
 
   # Better error pages.
   gem 'better_errors'
+  gem 'capybara'
 end
 
 group :production do
   gem 'rails_12factor'
   gem 'thin'
+  # gem 'unicorn', '4.8.3'
 end
 

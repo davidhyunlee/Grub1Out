@@ -3,6 +3,9 @@ class MenuItemsController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   def create
     # render plain: params
     @business = Business.find(params[:business_id])

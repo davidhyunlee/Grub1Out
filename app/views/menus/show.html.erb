@@ -1,5 +1,12 @@
-<% @menus.each do |menu| %>
+Business: <%= @business.name %><br>
+Menu Name: <%= @menu.name %><br><br>
 
-  <p><%= menu.name %></p>
+<% @category.each do |cat| %>
+
+  <strong><%= cat.name %></strong><br>
+
+  <% cat.menu_items.each do |item| %>
+    - <%= link_to item.name, business_menu_menu_item_category_menu_item_path(@business, @menu, cat, item) %> (<%= item.description %>) - <%= item.price %><br>
+  <% end %>
 
 <% end %>
