@@ -4,6 +4,11 @@ class MenuItemsController < ApplicationController
   end
 
   def show
+    @business = Business.find(params[:business_id])
+    @menu = @business.menus.find(params[:menu_id])
+    @category = @menu.menu_item_categories.find(params[:menu_item_category_id])
+    @item = @category.menu_items.find(params[:id])
+    @photo = @item.menu_item_photos.new
   end
 
   def create
@@ -11,7 +16,7 @@ class MenuItemsController < ApplicationController
     @business = Business.find(params[:business_id])
     @menu = @business.menus.find(params[:menu_id])
     @menu_item = MenuItem.new(menu_item_params)
-    @photo = MenuItemPhoto.new(params.require(:menu_item_photo).permit(:photo, :menu_item_id, :caption, :user_id))
+    # @photo = MenuItemPhoto.new(params.require(:menu_item_photo).permit(:photo, :menu_item_id, :caption, :user_id))
     @menu_item.save
     redirect_to edit_business_menu_path(@business, @menu)
   end

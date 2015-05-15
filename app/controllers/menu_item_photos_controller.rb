@@ -1,5 +1,14 @@
 class MenuItemPhotosController < ApplicationController
+  def new
+  end
+
   def create
+    @photo = MenuItemPhoto.new(menu_item_photo_params)
+    if @photo.save
+      redirect_to '/'
+    else
+      redirect_to '/businesses'
+    end
   end
 
   private
