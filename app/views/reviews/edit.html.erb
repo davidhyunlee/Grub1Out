@@ -1,10 +1,14 @@
 <%= form_for [@business, @review] do |f| %>
 
-
+<%= f.label :title %>
+<%= f.text_field :title %>
 <%= f.label :rating %>
 <%= f.text_field :rating %>
 
 <%= f.label :body %>
 <%= f.text_area :body %>
 <%= f.submit "Submit Changes" %>
+
+
+
 <% end %>
