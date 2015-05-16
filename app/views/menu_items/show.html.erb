@@ -6,6 +6,7 @@
 
   Photo: <%= f.file_field :photo %><br>
   Caption: <%= f.text_field :caption %>
+  <%= hidden_field_tag 'menu_item_photo[menu_item_id]', @item.id %>
 
   <%= f.submit "Upload Photo for #{@item.name}" %>
 
