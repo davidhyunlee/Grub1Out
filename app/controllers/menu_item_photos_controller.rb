@@ -3,6 +3,7 @@ class MenuItemPhotosController < ApplicationController
   end
 
   def create
+    # render plain: params
     @photo = MenuItemPhoto.new(menu_item_photo_params)
     if @photo.save
       redirect_to '/'
