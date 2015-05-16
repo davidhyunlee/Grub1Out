@@ -1,2 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#logo{
+    position: absolute;
+    z-index: 1;
+}
