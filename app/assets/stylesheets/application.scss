@@ -1,7 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#logo{
-    position: absolute;
-    z-index: 1;
+* {
+  font-family: 'Economica';
+  font-size: 20px;
+}
+.navbar {
+  background: #e0ded9;
+  padding-top: 10px;
+  height: 80px;
+}
+body {
+  padding-top: 80px;
 }
