@@ -1,6 +1,8 @@
 <%= @item.name %>
 
-
+<% @item.menu_item_photos.each do |photo| %>
+    <%= image_tag photo.photo.url %>
+<% end %>
 
 <%= form_for [@business, @menu, @category, @item, MenuItemPhoto.new] do |f| %>
 
