@@ -1,9 +1,9 @@
 <div class="container-fluid">
-  <div class="row businessheader">
+  <div class="row businessheader" style="background: #ccc url(<%= asset_path "#{@business.name.downcase.gsub(/\s/,'')}_1.jpg" %>);">
 
   <center><h1><%= @business.name %></h1></center>
 
-<script type="text/javascript" src="<%= @endpoint %>"></script>
+<!-- <script type="text/javascript" src="<%#= @endpoint %>"></script> -->
 
 
   </div>

@@ -4,7 +4,7 @@
 
 * {
   font-family: 'Economica';
-  font-size: 20px;
+  box-sizing: border-box;
 }
 
 .navbar {
@@ -24,6 +24,7 @@
 
 body {
   padding-top: 80px;
+  font-size: 20px;
 }
 
 .carousel-inner {
@@ -36,7 +37,47 @@ body {
 
 .businessheader {
   height: 400px;
-  background: #ccc url('http://beautifycorner.com/wp-content/uploads/2015/02/crispy-chicken-burger.jpg');
   background-size: cover;
   background-position: center;
+}
+
+.menu-show-heading {
+  font-size: 2em;
+  font-weight: bold;
+  color: #5F5F5F;
+  height: 100px;
+  text-align: center;
+  background: #B5B2AE;
+  padding-top: 20px;
+}
+
+.menu_image {
+  width: 240px;
+  height: 240px;
+  margin: 10px auto;
+  -webkit-box-shadow: 3px 3px 3px #777;
+       -moz-box-shadow: 3px 3px 3px #777;
+            box-shadow: 3px 3px 3px #777;
+}
+
+.polaroid {
+  position: relative;
+  width: 240px;
+}
+ 
+.polaroid img {
+  border: 10px solid #fff;
+  border-bottom: 45px solid #fff;
+  -webkit-box-shadow: 3px 3px 3px #777;
+     -moz-box-shadow: 3px 3px 3px #777;
+          box-shadow: 3px 3px 3px #777;
+}
+ 
+.polaroid p {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  bottom: 8px;
+  font: 400 18px/1 'Economica';
+  color: #71706D;
 }

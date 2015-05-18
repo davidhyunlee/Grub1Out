@@ -1,18 +1,53 @@
 <div class="container-fluid">
-  <div class="row">
+  <div class="row menu-show-heading" style="background: image-url('slide1.jpg');">
     <%= @business.name %>: <%= @menu.name %>
   </div>
-</div>
 
-Business: <br>
-Menu Name: <br><br>
 
 <% @category.each do |cat| %>
+  
+  <div class="row" style="background: #E0DED9;">
+  <h2><center><a name="<%= cat.name.downcase.gsub(/\s/,'') %>"></a><%= cat.name %></center></h2><br>
 
-  <strong><%= cat.name %></strong><br>
-
+  <div class="container">
   <% cat.menu_items.each do |item| %>
-    - <%= link_to item.name, business_menu_menu_item_category_menu_item_path(@business, @menu, cat, item) %> (<%= item.description %>) - <%= item.price %> <%= image_tag item.menu_item_photos.first.photo.url if item.menu_item_photos.first %><br>
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3" style="border: 1px dotted black;">
+      <center>
+      <div class="polaroid">
+        <%= link_to image_tag(item.menu_item_photos.first.photo.url, class: 'menu_image wow fadeInLeft'), '', :data => { :toggle => 'modal', :target => ".#{item.id}-modal" } if item.menu_item_photos.first %>
+        <%= link_to image_tag('image_unavailable.png', class: 'menu_image wow fadeInLeft'), business_menu_menu_item_category_menu_item_path(@business, @menu, cat, item) if !item.menu_item_photos.first %>
+      <p class="wow fadeInLeft"><%= item.name %></p>
+      </div>
+      </center>
+    </div>
+
+              <div class="modal fade <%= "#{item.id}-modal" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel"><%= item.name %> - $<%= item.price %></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+                      <%= item.description %><br>
+
+                      <p><%= link_to "More Photos", business_menu_menu_item_category_menu_item_path(@business, @menu, cat, item) if item.menu_item_photos.count > 1 %></p>
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
   <% end %>
+  </div>
 
 <% end %>
+  </div>
+
+</div>
+
+
+
+
