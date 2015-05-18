@@ -1,29 +1,29 @@
 <div id="index-carousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#index-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#index-carousel" data-slide-to="1"></li>
+    <li data-target="#index-carousel" data-slide-to="2"></li>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <div style="background-size: cover; background-position: center; background-image: url('http://thefatbutcherdeals.com/wp-content/uploads/2014/09/Rump-Steak-Meal-Deal.jpg'); height: 400px;"></div>
+      <div style="background-size: cover; background-position: center; background-image: url(<%= asset_path "slide1.jpg" %>); height: 400px;"></div>
       <div class="carousel-caption">
-        Them Steaks Tho!
+        Oh my god! Look at them fries!
       </div>
     </div>
     <div class="item">
-      <%= image_tag "slide2.jpg" %>
+      <div style="background-size: cover; background-position: center; background-image: url(<%= asset_path "slide2.jpg" %>); height: 400px;"></div>
       <div class="carousel-caption">
-        Second Image Caption
+        That pizza doe! Look at that pizza!
       </div>
     </div>
     <div class="item">
-      <%= image_tag "slide3.jpg" %>
+      <div style="background-size: cover; background-position: center; background-image: url(<%= asset_path "slide3.jpg" %>); height: 400px;"></div>
       <div class="carousel-caption">
-        Third Image Caption
+        That burger is cray!
       </div>
     </div>
   </div>
@@ -40,13 +40,29 @@
 </div>
 
   <!-- Search Area -->
-<div class="row" style="background: #e0ded9; height: 50px;">
-  <div class="container" style="background: #e0ded9;">
-    <div class="input-group" style="margin-top: 8px;">
-      <input type="text" class="form-control" placeholder="You hungry, bitch?">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Grub One Out!</button>
-      </span>
-    </div>
+<div class="row" style="background: #BEBDB8; height: 80px;">
+  <div class="container" style="text-align: center;">
+    <%= form_tag businesses_path, method: 'get', class: 'form-inline searchform' do %>
+      <div class="form-group">
+        <label></label>
+        <%= text_field_tag :query %>
+      </div>
+      <div class="form-group">
+        <label></label>
+        <%= select_tag "filter", "<option value='by_name'>Restaurant Name</option><option value='by_item'>Menu Item</option>".html_safe, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Search", class: "btn btn-default" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="container">
+    <div class="col-lg-3">Business 1</div>
+    <div class="col-lg-3">2</div>
+    <div class="col-lg-3">3</div>
+    <div class="col-lg-3">4</div>
   </div>
 </div>

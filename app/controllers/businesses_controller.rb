@@ -1,7 +1,15 @@
 class BusinessesController < ApplicationController
 
   def index
-    @businesses = Business.all
+    if params[:filter] == "by_name"
+      query = params[:query]
+      @results = Business.find_by_fuzzy_name(query, :limit => 10)
+    elsif params[:filter] == "by_item"
+      query = params[:query]
+      @results = MenuItem.find_by_fuzzy_name("#{query}")
+    else
+      @results = Business.order(:name)
+    end
   end
 
   def show

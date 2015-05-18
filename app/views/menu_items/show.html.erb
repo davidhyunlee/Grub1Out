@@ -1,4 +1,57 @@
-<%= @item.name %>
+<div class="container-fluid">
+  <div class="row menu-show-heading">
+    <span class="wow zoomIn"><%= @business.name %>: <%= @item.name %></span>
+  </div>
+
+
+
+  
+  <div class="row" style="background: #E0DED9;">
+
+  <div class="container">
+  <% @item.menu_item_photos.each do |photo| %>
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <center>
+      <div class="polaroid">
+        <%= link_to image_tag(photo.photo.url, class: 'menu_image wow zoomInDown'), '', :data => { :toggle => 'modal', :target => ".#{photo.id}-modal" } %>
+      <p class="wow fadeInLeft"><%= photo.caption %></p>
+      </div>
+      </center>
+    </div>
+
+              <div class="modal fade <%= "#{photo.id}-modal" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel"></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+                      
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+  <% end %>
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <% @item.menu_item_photos.each do |photo| %>
     <%= image_tag photo.photo.url %>

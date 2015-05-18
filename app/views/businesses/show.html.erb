@@ -1,43 +1,70 @@
 <div class="container-fluid">
   <div class="row businessheader" style="background: #ccc url(<%= asset_path "#{@business.name.downcase.gsub(/\s/,'')}_1.jpg" %>);">
 
-  <center><h1><%= @business.name %></h1></center>
-
+  <center><h1 class="wow zoomInDown" style="color: #fff; font-size: 70px; padding-top: 20px;"><%= @business.name %></h1></center>
+  <center><h2 class="wow zoomInLeft" style="color: #fff;"><%= @business.address.delete "[\"]" %></h2></center>
   </div>
 
-  <div class="row" style="background: #474747">
-    <center><h1>Menus</h1></center>
+  <div class="row" style="background: #C5C5C1; padding-bottom: 25px;">
+
+    <center><h1 class="wow zoomInUp">Menus</h1></center>
     <% @menus.each do |menu| %>
       <center><%= link_to menu.name, business_menu_path(@business, menu) %></center>
     <% end %>
 
   </div>
 
-  <div class="row">
-  <div class="wow slideInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-    <center><h1 class="wow slideInLeft">Reviews</h1></center>
-    <% @reviews.each do |review| %>
-      <center><%= review.body %></center>
-    <% end %>
-  </div>
+
+<div class="row">
+  <div id="map-canvas" style="width: 100%; height: 280px; background: #000;"></div>
+</div>
+
+
+  <div class="row" style="padding-bottom: 25px;">
+      <center><h1 class="wow zoomInUp" style="padding-bottom: 15px;">Reviews</h1></center>
+      <% @reviews.each do |review| %>
+        <center><span class="wow zoomInRight">"<%= review.body %>" - <%= review.rating %> Stars</span></center><br>
+      <% end %>
+
+    <center><button type="" data-toggle="modal" data-target=".reviewModal">Add Review</button></center>
   </div>
 
 </div>
 
 
+              <div class="modal fade reviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel">Review <%= @business.name %></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+
+                      <%= form_for [@business, Review.new] do |f| %>
+
+                        <div class="form-group">
+                          <label>Rating:</label>
+                          <%= select_tag 'review[rating]', "<option value='5'>5 Stars</option><option value='4'>4 Stars</option><option value='3'>3 Stars</option><option value='2'>2 Stars</option><option value='1'>1 Star</option>".html_safe, class: "form-control", id: "review_rating" %>
+                        </div>
+                        <div class="form-group">
+                          <label>Review Text:</label>
+                          <%= f.text_area :body, class: 'form-control' %>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <%= f.submit "Submit Review", class: 'btn btn-default' %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 
-<div class="map_info_container" style="width: 100%; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
-  <div id="map-canvas" style="width: 100%; height: 250px; background: #000;"></div>
-  <div id="address_details" style="width: 200px; padding: 6px;">
-  <h5 class="normalize">Address:</h5>
-    <%= @business.address %><br>
-    <%= @business.city %>, <%= @business.state_code %>, <%= @business.postal_code %><br>
-    <%= "<b>Phone:</b> #{number_to_phone(@business.phone, area_code: true)}".html_safe if @business.phone %>
-    <br><br>
 
-  </div>
-</div>
+
 
 
 <%= render 'businesses/map' %>

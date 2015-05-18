@@ -4,7 +4,7 @@ class Api::V1::MenusController < ApplicationController
 
   def index
     menus = Menu.all
-    render json: menus
+    render json: menus, root: false
   end
 
   def show

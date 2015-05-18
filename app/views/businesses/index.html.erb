@@ -1,7 +1,17 @@
-<h1>index</h1>
 
 
-<% @businesses.each do |b| %>
-    <%= b.name %>
+<% @results.each do |r| %>
 
+<div class="row">
+  <div class="container">
+    <% if params[:filter] == 'by_name' %>
+      <%= link_to r.name, business_path(r) %>
+      <%= r.address.delete "[\"]" %>. <%= r.city %> <%= r.state_code %> <%= r.postal_code %>
+    <% end %>
+
+    <% if params[:filter] == 'by_item' %>
+      <%= link_to r.name, business_menu_menu_item_category_menu_item_path(r.menu_item_category.menu.business, r.menu_item_category.menu, r.menu_item_category, r) %> 
+    <% end %>    
+  </div>
+</div>
 <% end %>
