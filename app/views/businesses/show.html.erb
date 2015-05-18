@@ -3,9 +3,6 @@
 
   <center><h1><%= @business.name %></h1></center>
 
-<!-- <script type="text/javascript" src="<%#= @endpoint %>"></script> -->
-
-
   </div>
 
   <div class="row" style="background: #474747">
@@ -13,7 +10,7 @@
     <% @menus.each do |menu| %>
       <center><%= link_to menu.name, business_menu_path(@business, menu) %></center>
     <% end %>
-    
+
   </div>
 
   <div class="row">
@@ -25,29 +22,10 @@
   </div>
   </div>
 
-  <div class="row">
-    <div id="map" style='width: 100%; height: 400px;'></div>
-  </div>
-
-
 </div>
 
 
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers([
-    {
-      "lat": 43,
-      "lng": 3.5,
-      "infowindow": "hello!"
-    }
-  ]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
 
-</script>
 
 <div class="map_info_container" style="width: 100%; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
   <div id="map-canvas" style="width: 100%; height: 250px; background: #000;"></div>
@@ -60,5 +38,6 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
   </div>
 </div>
+
 
 <%= render 'businesses/map' %>
