@@ -6,6 +6,8 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @menus = @business.menus.all
+    @reviews = @business.reviews.all
   end
 
   def edit

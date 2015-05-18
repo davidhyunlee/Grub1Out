@@ -1,15 +1,42 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "animate";
 
 * {
   font-family: 'Economica';
   font-size: 20px;
 }
+
 .navbar {
   background: #e0ded9;
   padding-top: 10px;
   height: 80px;
 }
+
+.collapselogo {
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+.logo {
+  margin: 4px auto 0;
+}
+
 body {
   padding-top: 80px;
+}
+
+.carousel-inner {
+  max-height: 400px;
+}
+
+.slider_image {
+  max-height: 400px;
+}
+
+.businessheader {
+  height: 400px;
+  background: #ccc url('http://beautifycorner.com/wp-content/uploads/2015/02/crispy-chicken-burger.jpg');
+  background-size: cover;
+  background-position: center;
 }

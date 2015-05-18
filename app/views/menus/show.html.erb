@@ -1,5 +1,11 @@
-Business: <%= @business.name %><br>
-Menu Name: <%= @menu.name %><br><br>
+<div class="container-fluid">
+  <div class="row">
+    <%= @business.name %>: <%= @menu.name %>
+  </div>
+</div>
+
+Business: <br>
+Menu Name: <br><br>
 
 <% @category.each do |cat| %>
 
