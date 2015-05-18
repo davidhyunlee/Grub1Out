@@ -11,7 +11,7 @@
 
   <div class="container">
   <% cat.menu_items.each do |item| %>
-    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3" style="border: 1px dotted black;">
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
       <center>
       <div class="polaroid">
         <%= link_to image_tag(item.menu_item_photos.first.photo.url, class: 'menu_image wow fadeInLeft'), '', :data => { :toggle => 'modal', :target => ".#{item.id}-modal" } if item.menu_item_photos.first %>
