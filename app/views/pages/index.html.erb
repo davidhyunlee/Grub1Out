@@ -60,9 +60,17 @@
 
 <div class="row">
   <div class="container">
-    <div class="col-lg-3">Business 1</div>
-    <div class="col-lg-3">2</div>
-    <div class="col-lg-3">3</div>
-    <div class="col-lg-3">4</div>
+    <center><h2 class="wow zoomInRight">That Food Doe!</h2></center>
+    <% @items.each do |item| %>
+    <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <center>
+      <div class="polaroid">
+        <%= link_to image_tag(item.menu_item_photos.first.photo.url, class: 'menu_image wow zoomInDown'), business_menu_path(item.menu_item_category.menu.business, item.menu_item_category.menu) if item.menu_item_photos.first %>
+        <%= link_to image_tag('image_unavailable.png', class: 'menu_image wow zoomInDown'), business_menu_path(item.menu_item_category.menu.business, item.menu_item_category.menu) if !item.menu_item_photos.first %>
+      <p class="wow fadeInLeft"><%= item.name %></p>
+      </div>
+      </center>
+    </div>
+    <% end %>
   </div>
 </div>
