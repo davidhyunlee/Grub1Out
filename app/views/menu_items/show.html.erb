@@ -13,8 +13,8 @@
     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
       <center>
       <div class="polaroid">
-        <%= link_to image_tag(photo.photo.url, class: 'menu_image wow zoomInDown'), '', :data => { :toggle => 'modal', :target => ".#{photo.id}-modal" } %>
-      <p class="wow fadeInLeft"><%= photo.caption %></p>
+        <%= link_to image_tag(photo.photo.url, class: 'menu_image wow zoomInDown'), business_menu_path(@business, @menu) if photo.photo.url %>
+        <p class="wow fadeInLeft"><%= photo.menu_item.name if photo.photo.url%></p>
       </div>
       </center>
     </div>
@@ -43,19 +43,6 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-<% @item.menu_item_photos.each do |photo| %>
-    <%= image_tag photo.photo.url %>
-<% end %>
 
 <%= form_for [@business, @menu, @category, @item, MenuItemPhoto.new] do |f| %>
 

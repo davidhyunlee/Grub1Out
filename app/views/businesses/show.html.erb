@@ -2,10 +2,10 @@
   <div class="row businessheader" style="background: #ccc url(<%= asset_path "#{@business.name.downcase.gsub(/\s/,'')}_1.jpg" %>);">
 
   <center><h1 class="wow zoomInDown" style="color: #fff; font-size: 70px; padding-top: 20px;"><%= @business.name %></h1></center>
-  <center><h2 class="wow zoomInLeft" style="color: #fff;"><%= @business.address.delete "[\"]" %></h2></center>
+  <center><h2 class="wow zoomInLeft" style="color: #fff;"><%= @business.address.delete "[\"]" %><br><%= @business.city %> <%= @business.state_code %>  <%= @business.postal_code %></h2></center>
   </div>
 
-  <div class="row" style="background: #C5C5C1; padding-bottom: 25px;">
+  <div class="row" style="background: #DCDCD3; padding-bottom: 25px;">
 
     <center><h1 class="wow zoomInUp">Menus</h1></center>
     <% @menus.each do |menu| %>
