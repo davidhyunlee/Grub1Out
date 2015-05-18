@@ -4,12 +4,12 @@ class Api::V1::BusinessesController < ApplicationController
 
   def index
     businesses = Business.all
-    render json: businesses
+    render json: businesses, root: false
   end
 
   def show
     business = Business.find(params[:id])
-    render json: business
+    render json: business, root: false
   end
 
 

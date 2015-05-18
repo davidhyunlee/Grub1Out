@@ -1,5 +1,5 @@
 class MenuSerializer < ActiveModel::Serializer
-  attributes :name, :business_name
+  attributes :name
   has_many :menu_item_categories
 
   def business_name
