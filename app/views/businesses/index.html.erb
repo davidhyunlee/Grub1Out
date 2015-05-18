@@ -1,17 +1,61 @@
+<div class="row">
+  <div class="container">
 
+      <% if params[:filter] == 'by_item' %><center><h2>Search Results for: <%= params[:query] %></h2></center><% end %>      
+      <% if params[:filter] == 'by_name' %><center><h2>Search Results for: <%= params[:query] %></h2></center><% end %>    
+      <% if !params[:filter] %><center><h2>Restaurants Listing by Alphabetical Order</h2></center><% end %>
 
 <% @results.each do |r| %>
 
-<div class="row">
-  <div class="container">
+
     <% if params[:filter] == 'by_name' %>
       <%= link_to r.name, business_path(r) %>
       <%= r.address.delete "[\"]" %>. <%= r.city %> <%= r.state_code %> <%= r.postal_code %>
     <% end %>
 
     <% if params[:filter] == 'by_item' %>
-      <%= link_to r.name, business_menu_menu_item_category_menu_item_path(r.menu_item_category.menu.business, r.menu_item_category.menu, r.menu_item_category, r) %> 
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <center>
+      <div class="polaroid">
+        <%= link_to image_tag(r.menu_item_photos.first.photo.url, class: 'menu_image wow zoomInDown'), '', :data => { :toggle => 'modal', :target => ".#{r.id}-modal" } if r.menu_item_photos.first %>
+        <%= link_to image_tag('image_unavailable.png', class: 'menu_image wow zoomInDown'), '', :data => { :toggle => 'modal', :target => ".#{r.id}-modal" } if !r.menu_item_photos.first %>
+
+      <p class="wow fadeInLeft"><%= r.name %></p>
+      </div>
+      </center>
+      </div>
+
+                    <div class="modal fade <%= "#{r.id}-modal" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel"><%= r.name %> - $<%= r.price %></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+                      <%= r.description %><br>
+
+                      <p><%= link_to "More Photos", business_menu_menu_item_category_menu_item_path(r.menu_item_category.menu.business, r.menu_item_category.menu, r.menu_item_category, r) if r.menu_item_photos.count > 1 %></p>
+                      <p><%= link_to "Get these #{r.name} at #{r.menu_item_category.menu.business.name}", business_path(r.menu_item_category.menu.business) %></p>
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
     <% end %>    
+
+    <% if !params[:filter] %>
+      <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
+      <center>
+              <%= link_to r.name, business_path(r) %>
+      </center>
+      </div>
+    <% end %>    
+
+<% end %>
+
   </div>
 </div>
-<% end %>
+
