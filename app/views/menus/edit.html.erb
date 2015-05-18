@@ -11,26 +11,57 @@
 
 <% @menu.menu_item_categories.each do |cat| %>
 
-<strong><p><%= cat.name %></p></strong>
-  <% if cat.name %>
-  <%= form_tag("/businesses/#{@business.id}/menus/#{@menu.id}/menu_item_categories/#{cat.id}/menu_items", method: :post) do %>
+<% if cat.name %>
+<strong><p><%= cat.name %> - <a data-toggle="modal" data-target="#myModal-<%= cat.id %>">Add Menu Item</a></p></strong>
+<% end %>
 
-    Item Name: <%= text_field_tag 'menu_item[name]' %>
-    Description: <%= text_field_tag 'menu_item[description]' %>
-    Price: <%= text_field_tag 'menu_item[price]' %>
-    <%= hidden_field_tag 'menu_item[menu_id]', @menu.id %>
-    <%= hidden_field_tag 'menu_item[menu_item_category_id]', cat.id %>
-    <%= hidden_field_tag 'menu_item[business_id]', @business.id %>
+<div class="modal fade" id="myModal-<%= cat.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%= cat.name %></h4>
+      </div>
+      <div class="modal-body">
+        <% if cat.name %>
+        <%= form_tag("/businesses/#{@business.id}/menus/#{@menu.id}/menu_item_categories/#{cat.id}/menu_items", method: :post) do %>
 
-    <%= submit_tag 'submit!' %>
+          Item Name: <%= text_field_tag 'menu_item[name]' %><br>
+          Description: <%= text_field_tag 'menu_item[description]' %><br>
+          Price: <%= text_field_tag 'menu_item[price]' %>
+          <%= hidden_field_tag 'menu_item[menu_id]', @menu.id %>
+          <%= hidden_field_tag 'menu_item[menu_item_category_id]', cat.id %>
+          <%= hidden_field_tag 'menu_item[business_id]', @business.id %>
 
-  <% end %>
-  <% end %>
+          <%= submit_tag 'submit!' %>
+
+        <% end %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add Item</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
   <% cat.menu_items.each do |items| %>
 
-    <%= items.name %> - <%= items.description %> - <%= items.price %><br>
+    > <%= items.name %> - <%= items.description %> - <%= items.price %><br>
 
   <% end %>
 
 <% end %>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->

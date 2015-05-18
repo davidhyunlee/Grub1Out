@@ -9,9 +9,9 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= image_tag "slide1.jpg" %>
+      <div style="background-size: cover; background-position: center; background-image: url('http://thefatbutcherdeals.com/wp-content/uploads/2014/09/Rump-Steak-Meal-Deal.jpg'); height: 400px;"></div>
       <div class="carousel-caption">
-        First Image Caption
+        Them Steaks Tho!
       </div>
     </div>
     <div class="item">
@@ -20,16 +20,33 @@
         Second Image Caption
       </div>
     </div>
-    ...
+    <div class="item">
+      <%= image_tag "slide3.jpg" %>
+      <div class="carousel-caption">
+        Third Image Caption
+      </div>
+    </div>
   </div>
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#index-carousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="right carousel-control" href="#index-carousel" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+
+  <!-- Search Area -->
+<div class="row" style="background: #e0ded9; height: 50px;">
+  <div class="container" style="background: #e0ded9;">
+    <div class="input-group" style="margin-top: 8px;">
+      <input type="text" class="form-control" placeholder="You hungry, bitch?">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Grub One Out!</button>
+      </span>
+    </div>
+  </div>
 </div>

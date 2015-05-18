@@ -11,6 +11,8 @@ class BusinessesController < ApplicationController
     @endpoint = url + key
 
     @business = Business.find(params[:id])
+    @menus = @business.menus.all
+    @reviews = @business.reviews.all
   end
 
   def edit

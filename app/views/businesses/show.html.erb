@@ -1,10 +1,53 @@
+<div class="container-fluid">
+  <div class="row businessheader">
+
+  <center><h1><%= @business.name %></h1></center>
 
 <script type="text/javascript" src="<%= @endpoint %>"></script>
 
-<h1>business show</h1>
+
+  </div>
+
+  <div class="row" style="background: #474747">
+    <center><h1>Menus</h1></center>
+    <% @menus.each do |menu| %>
+      <center><%= link_to menu.name, business_menu_path(@business, menu) %></center>
+    <% end %>
+    
+  </div>
+
+  <div class="row">
+  <div class="wow slideInLeft" data-wow-duration="2s" data-wow-delay=".5s">
+    <center><h1 class="wow slideInLeft">Reviews</h1></center>
+    <% @reviews.each do |review| %>
+      <center><%= review.body %></center>
+    <% end %>
+  </div>
+  </div>
+
+  <div class="row">
+    <div id="map" style='width: 100%; height: 400px;'></div>
+  </div>
 
 
-<%= @business.name %>
+</div>
+
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": 43,
+      "lng": 3.5,
+      "infowindow": "hello!"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+
+</script>
 
 <div class="map_info_container" style="width: 100%; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
   <div id="map-canvas" style="width: 100%; height: 250px; background: #000;"></div>
