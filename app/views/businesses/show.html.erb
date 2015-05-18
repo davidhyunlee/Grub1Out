@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row businessheader">
+  <div class="row businessheader" style="background: #ccc url(<%= asset_path "#{@business.name.downcase.gsub(/\s/,'')}_1.jpg" %>);”>
 
   <center><h1><%= @business.name %></h1></center>
 
@@ -13,7 +13,7 @@
     <% @menus.each do |menu| %>
       <center><%= link_to menu.name, business_menu_path(@business, menu) %></center>
     <% end %>
-    
+
   </div>
 
   <div class="row">
