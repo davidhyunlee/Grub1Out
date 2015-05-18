@@ -1,33 +1,33 @@
 <div class="container-fluid">
-  <div class="row businessheader">
+<div class="row businessheader">
 
-  <center><h1><%= @business.name %></h1></center>
+          <center><h1><%= @business.name %></h1></center>
 
 <script type="text/javascript" src="<%= @endpoint %>"></script>
 
 
-  </div>
+</div>
 
-  <div class="row" style="background: #474747">
-    <center><h1>Menus</h1></center>
-    <% @menus.each do |menu| %>
-      <center><%= link_to menu.name, business_menu_path(@business, menu) %></center>
+          <div class="row" style="background: #474747">
+          <center><h1>Menus</h1></center>
+                  <% @menus.each do |menu| %>
+          <center><%= link_to menu.name, business_menu_path(@business, menu) %></center>
     <% end %>
-    
-  </div>
 
-  <div class="row">
-  <div class="wow slideInLeft" data-wow-duration="2s" data-wow-delay=".5s">
-    <center><h1 class="wow slideInLeft">Reviews</h1></center>
-    <% @reviews.each do |review| %>
-      <center><%= review.body %></center>
+</div>
+            <!-- Class for animated slide show  -->
+            <div class="row">
+            <div class="wow slideInLeft" data-wow-duration="2s" data-wow-delay=".5s">
+            <center><h1 class="wow slideInLeft">Reviews</h1></center>
+                <% @reviews.each do |review| %>
+            <center><%= review.body %></center>
     <% end %>
-  </div>
-  </div>
+</div>
+</div>
 
-  <div class="row">
-    <div id="map" style='width: 100%; height: 400px;'></div>
-  </div>
+             <div class="row">
+            <div id="map" style='width: 100%; height: 400px;'></div>
+</div>
 
 
 </div>
@@ -47,18 +47,18 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   handler.fitMapToBounds();
 });
 
-</script>
+</script>    <!-- Map area  -->
 
-<div class="map_info_container" style="width: 100%; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
-  <div id="map-canvas" style="width: 100%; height: 250px; background: #000;"></div>
-  <div id="address_details" style="width: 200px; padding: 6px;">
-  <h5 class="normalize">Address:</h5>
-    <%= @business.address %><br>
-    <%= @business.city %>, <%= @business.state_code %>, <%= @business.postal_code %><br>
-    <%= "<b>Phone:</b> #{number_to_phone(@business.phone, area_code: true)}".html_safe if @business.phone %>
+            <div class="map_info_container" style="width: 100%; background: #fff; border: 1px solid darkgray; overflow: hidden; float: right;">
+            <div id="map-canvas" style="width: 100%; height: 250px; background: #000;"></div>
+            <div id="address_details" style="width: 200px; padding: 6px;">
+             <h5 class="normalize">Address:</h5>
+                    <%= @business.address %><br>
+                    <%= @business.city %>, <%= @business.state_code %>, <%= @business.postal_code %><br>
+                    <%= "<b>Phone:</b> #{number_to_phone(@business.phone, area_code: true)}".html_safe if @business.phone %>
     <br><br>
 
-  </div>
+</div>
 </div>
 
 <%= render 'businesses/map' %>
