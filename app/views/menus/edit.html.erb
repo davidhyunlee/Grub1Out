@@ -1,67 +1,165 @@
-<%= @menu.name %>
+<div class="container-fluid">
+  <div class="row menu-show-heading">
+    <%= @business.name %>: <%= @menu.name %>
+  </div>
 
 
+
+<div class="row" style="margin: 10px auto; background: #CECFCA; padding: 10px;">
 <%= form_for [@business, @menu, @category] do |f| %>
 
-  <label>Category Name:</label><%= f.text_field :name %>
+  <label>Add a New Category:</label> <%= f.text_field :name %>
 
-  <%= f.submit %>
+  <%= f.submit "Create" %>
 
 <% end %>
+</div>
+
 
 <% @menu.menu_item_categories.each do |cat| %>
 
 <% if cat.name %>
-<strong><p><%= cat.name %> - <a data-toggle="modal" data-target="#myModal-<%= cat.id %>">Add Menu Item</a></p></strong>
+<strong><p><%= cat.name %> - <a data-toggle="modal" data-target=".editCat-<%= cat.id %>">Edit</a> | <a data-toggle="modal" data-target=".myModal-<%= cat.id %>">Add Item</a></p></strong>
 <% end %>
 
-<div class="modal fade" id="myModal-<%= cat.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= cat.name %></h4>
-      </div>
-      <div class="modal-body">
-        <% if cat.name %>
-        <%= form_tag("/businesses/#{@business.id}/menus/#{@menu.id}/menu_item_categories/#{cat.id}/menu_items", method: :post) do %>
-
-          Item Name: <%= text_field_tag 'menu_item[name]' %><br>
-          Description: <%= text_field_tag 'menu_item[description]' %><br>
-          Price: <%= text_field_tag 'menu_item[price]' %>
-          <%= hidden_field_tag 'menu_item[menu_id]', @menu.id %>
-          <%= hidden_field_tag 'menu_item[menu_item_category_id]', cat.id %>
-          <%= hidden_field_tag 'menu_item[business_id]', @business.id %>
-
-          <%= submit_tag 'submit!' %>
-
-        <% end %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Item</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
+              <div class="modal fade myModal-<%= cat.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel">Add to <%= cat.name %></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+                      <% if cat.name %>
+                      <%= form_tag("/businesses/#{@business.id}/menus/#{@menu.id}/menu_item_categories/#{cat.id}/menu_items", method: :post) do %>
 
+                        <div class="form-group">
+                          <label for="Item Name">Item Name:</label>
+                          <%= text_field_tag 'menu_item[name]', nil, class: 'form-control', placeholder: 'Item name...' %>
+                        </div>
+                        <div class="form-group">
+                          <label for="Description">Description:</label>
+                          <%= text_area_tag 'menu_item[description]', nil, class: 'form-control', placeholder: 'Description here...' %>
+                        </div>
+                        <div class="form-group">
+                          <label for="Price">Price:</label>
+                          <%= text_field_tag 'menu_item[price]', nil, class: 'form-control', placeholder: '1.99' %>
+                        </div>
+                        <%= hidden_field_tag 'menu_item[menu_id]', @menu.id %>
+                        <%= hidden_field_tag 'menu_item[menu_item_category_id]', cat.id %>
+                        <%= hidden_field_tag 'menu_item[business_id]', @business.id %>
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <%= submit_tag 'Add Item', class: "btn btn-default" %>
+                    </div>
+                    <% end %>
+                    <% end %>                    
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="modal fade editCat-<%= cat.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel">Edit <%= cat.name %></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+                      <% if cat.name %>
+                      <%= form_for [@business, @menu, cat] do |f| %>
+                      <label>Category Name:</label>
+                      <%= f.text_field :name %>
+
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <%= f.submit 'Update Category Name', class: "btn btn-default" %>
+                    </div>
+                    <% end %>
+                    <% end %>                    
+                  </div>
+                </div>
+              </div>
 
 
 
 
   <% cat.menu_items.each do |items| %>
 
-    > <%= items.name %> - <%= items.description %> - <%= items.price %><br>
+    > <%= items.name %> - <%= items.description %> - <%= items.price %> <a data-toggle="modal" data-target=".editItem-<%= items.id %>">Edit</a> | <a data-toggle="modal" data-target=".addPhoto-<%= items.id %>">Add Photo</a><br>
+
+              <div class="modal fade editItem-<%= items.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel">Edit <%= items.name %></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+                      <% if items.name %>
+                      <%= form_for [@business, @menu, cat, items] do |f| %>
+                      <div class="form-group">
+                        <label>Name:</label>
+                        <%= f.text_field :name, class: 'form-control' %>
+                      </div>
+                      <div class="form-group">
+                        <label>Description:</label>
+                        <%= f.text_area :description, class: 'form-control' %>
+                      </div>
+                      <div class="form-group">
+                        <label>Price:</label>
+                        <%= f.text_field :price, class: 'form-control' %>
+                      </div>
+
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <%= f.submit 'Update Menu Item', class: "btn btn-default" %>
+                    </div>
+                    <% end %>
+                    <% end %>                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade addPhoto-<%= items.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 180px;">
+                <div class="modal-dialog">
+                  <div class="modal-content" style="border-radius: 0px">
+                    <div class="modal-header" style="background: #A6A39E;">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h2 class="modal-title" id="myModalLabel">Edit <%= items.name %></h2>
+                    </div>
+                    <div class="modal-body" style="background: #D9D7D0;">
+                      <% if items.name %>
+                      <%= form_for [@business, @menu, cat, items, MenuItemPhoto.new] do |f| %>
+                      <div class="form-group">
+                        <label>Photo:</label>
+                        <%= f.file_field :photo, class: 'form-control' %>
+                      </div>
+                      <div class="form-group">
+                        <label>Caption:</label>
+                        <%= f.text_area :caption, class: 'form-control' %>
+                      </div>
+                        <%= hidden_field_tag 'menu_item_photo[menu_item_id]', items.id %>
+                    </div>
+                    <div class="modal-footer" style="background: #A6A39E;">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <%= f.submit 'Update Menu Item', class: "btn btn-default" %>
+                    </div>
+                    <% end %>
+                    <% end %>                    
+                  </div>
+                </div>
+              </div>    
 
   <% end %>
 
 <% end %>
 
-
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
+</div>

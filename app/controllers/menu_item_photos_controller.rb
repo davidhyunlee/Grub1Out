@@ -4,11 +4,13 @@ class MenuItemPhotosController < ApplicationController
 
   def create
     # render plain: params
+    @business = Business.find(params[:business_id])
+    @menu = Menu.find(params[:menu_id])
     @photo = MenuItemPhoto.new(menu_item_photo_params)
     if @photo.save
-      redirect_to '/'
+      redirect_to business_menu_path(@business, @menu)
     else
-      redirect_to '/businesses'
+      redirect_to edit_business_menu_path(@business, @menu)
     end
   end
 

@@ -7,7 +7,7 @@
 <% @category.each do |cat| %>
   
   <div class="row" style="background: #E0DED9;">
-  <h2><center><a name="<%= cat.name.downcase.gsub(/\s/,'') %>"></a><%= cat.name %></center></h2><br>
+  <h2 class="wow fadeInDown"><center><a name="<%= cat.name.downcase.gsub(/\s/,'') %>"></a><%= cat.name if cat.menu_items.count > 0 %></center></h2>
 
   <div class="container">
   <% cat.menu_items.each do |item| %>
