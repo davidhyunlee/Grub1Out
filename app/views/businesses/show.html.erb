@@ -10,7 +10,7 @@
   <div id="map-canvas" style="width: 100%; height: 250px; background: #000;"></div>
   <div id="address_details" style="width: 200px; padding: 6px;">
   <h5 class="normalize">Address:</h5>
-    <%= "#{@business.address}" %><br>
+    <%= @business.address %><br>
     <%= @business.city %>, <%= @business.state_code %>, <%= @business.postal_code %><br>
     <%= "<b>Phone:</b> #{number_to_phone(@business.phone, area_code: true)}".html_safe if @business.phone %>
     <br><br>
