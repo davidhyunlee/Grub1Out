@@ -6,9 +6,9 @@ class BusinessesController < ApplicationController
 
   def show
     # Google Maps API
-    url = "https://maps.googleapis.com/maps/api/js?key="
-    key = ENV['GOOGLE_MAPS']
-    @endpoint = url + key
+    # url = "https://maps.googleapis.com/maps/api/js?key="
+    # key = ENV['GOOGLE_MAPS']
+    # @endpoint = url + key
 
     @business = Business.find(params[:id])
     @menus = @business.menus.all
