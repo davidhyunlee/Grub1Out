@@ -1,5 +1,6 @@
 require 'rails_helper'
-
+require 'rspec/rails'
+require 'capybara/rspe'
 # Specs in this file have access to a helper object that includes
 # the BusinessesHelper. For example:
 #

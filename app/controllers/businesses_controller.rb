@@ -1,5 +1,6 @@
 class BusinessesController < ApplicationController
 
+# fuzzy search filters search by name and narrows it down if search query is similar
   def index
     if params[:filter] == "by_name"
       query = params[:query]
@@ -12,6 +13,7 @@ class BusinessesController < ApplicationController
     end
   end
 
+# shows business and reviews for business show page
   def show
     # Google Maps API
     # url = "https://maps.googleapis.com/maps/api/js?key="
@@ -31,6 +33,7 @@ class BusinessesController < ApplicationController
     @business = Business.new
   end
 
+# creates new businesses
   def create
     @business = Business.new(business_params)
     if @business.save
@@ -40,6 +43,7 @@ class BusinessesController < ApplicationController
     end
   end
 
+# updates business attributes
   def update
     @business = Business.find(params[:id])
     if @business.update_attributes(business_params)
@@ -48,7 +52,8 @@ class BusinessesController < ApplicationController
         render edit
     end
   end
-
+  
+# destroy method
   def destroy
     @business = Business.find(params[:id])
     @business.destroy

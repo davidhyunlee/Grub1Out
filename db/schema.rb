@@ -137,9 +137,8 @@ ActiveRecord::Schema.define(version: 20150517233359) do
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.integer  "business_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "restaurant_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "menus", ["business_id"], name: "index_menus_on_business_id", using: :btree
@@ -198,14 +197,13 @@ ActiveRecord::Schema.define(version: 20150517233359) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.string   "username"
     t.datetime "oauth_expires_at"
     t.string   "oauth_token"
-    t.integer  "roles_mask"
-    t.string   "roles"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,10 +1,14 @@
 <script type="text/javascript">
+// initializes google maps and geocoder
 var geocoder;
 var map;
 function initialize() {
   geocoder = new google.maps.Geocoder();
+  // grabs address, city, zip and state from business and inputs in google maps
   var address = "<%= "#{@business.address}, #{@business.city}, #{@business.state_code}, #{@business.postal_code}" %>"
   geocoder.geocode( { 'address': address}, function(results, status) {
+    
+    // places marker on the map based on status
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
@@ -21,6 +25,7 @@ function initialize() {
   };
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
+// adds traffic layer to maps
   var trafficLayer = new google.maps.TrafficLayer();
   trafficLayer.setMap(map);
 }
