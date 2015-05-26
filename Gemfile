@@ -87,6 +87,7 @@ group :development, :test do
   # Better error pages.
   gem 'better_errors'
   gem 'capybara'
+  gem 'guard-rspec'
 end
 
 group :production do
